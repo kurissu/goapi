@@ -1,7 +1,6 @@
 package tools
 
 import (
-	"strings"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -23,9 +22,9 @@ type DatabaseInterface interface {
 	SetupDatabase() error
 }
 
-func NewDatabase() (DatabaseInterface, error) {
+func NewDatabase() (*DatabaseInterface, error) {
 
-	var database DatabaseInterface =&mockDB{}
+	var database DatabaseInterface = &mockDB{}
 
 	var err error = database.SetupDatabase()
 	if err != nil {

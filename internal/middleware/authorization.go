@@ -1,10 +1,9 @@
 package middleware
 
 import (
-	"error"
+	"errors"
 	"net/http"
 
-	"github.com/kurissu/goapi"
 	"github.com/kurissu/goapi/api"
 	"github.com/kurissu/goapi/internal/tools"
 	log "github.com/sirupsen/logrus"
@@ -28,7 +27,7 @@ func Authrization(next http.Handler) http.Handler {
 		var database *tools.DatabaseInterface
 		database, err =tools.NewDatabase()
 		if err != nil {
-			api.internalErrorHandler(w)
+			api.InternalErrorHandler(w)
 			return
 		}
 
